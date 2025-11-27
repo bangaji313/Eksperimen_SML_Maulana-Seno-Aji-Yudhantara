@@ -34,13 +34,13 @@ Dataset yang digunakan adalah **Customer Churn Dataset** yang bersumber dari Kag
 Eksperimen_SML_Maulana-Seno-Aji-Yudhantara/
 ├── .github/workflows/
 │   └── data_pipeline.yml        # Workflow GitHub Actions untuk otomatisasi
-├── data_raw/                    # Folder penyimpanan dataset mentah
-├── preprocessing/               # Folder penyimpanan dataset hasil cleaning
-├── Membangun_model/             # Folder training & eksperimen model
-│   ├── mlruns/                  # Log lokal MLflow
-│   └── modelling_tuning.py      # Script training dengan Hyperparameter Tuning
-├── automate_Maulana-Seno-Aji-Yudhantara.py  # Script Python untuk preprocessing otomatis
-├── Eksperimen_Maulana-Seno-Aji-Yudhantara.ipynb # Notebook eksperimen (EDA & Manual)
+├── churn_raw/                    # Folder penyimpanan dataset mentah
+│   ├── customer_churn_dataset-testing-master.csv
+│   └── customer_churn_dataset-training-master.csv
+├── preprocessing/               # Folder penyimpanan dataset hasil cleaning & Script
+│   ├── customer_churn_cleaned.csv
+│   ├── automate_Maulana-Seno-Aji-Yudhantara.py
+│   └── Eksperimen_Maulana-Seno-Aji-Yudhantara.ipynb
 ├── requirements.txt             # Daftar library yang dibutuhkan
 └── README.md                    # Dokumentasi proyek
 ```
@@ -61,8 +61,7 @@ Setiap kali ada *push* ke branch `main`, sistem akan otomatis:
 
 ### 2. Hyperparameter Tuning & Logging (Level Advanced)
 
-Script `modelling_tuning.py` digunakan untuk:
-
+Catatan: Proses ini dijalankan pada environment lokal/terpisah dan log tersimpan di DagsHub.
 - Melakukan **Grid Search** pada algoritma *Random Forest*
 - Mencatat parameter terbaik (`max_depth`, `n_estimators`, dll) ke **DagsHub**
 - Menyimpan metrik evaluasi:  
